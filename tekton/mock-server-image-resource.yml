@@ -1,0 +1,11 @@
+apiVersion: tekton.dev/v1alpha1
+kind: PipelineResource
+metadata:
+  name: mock-server-image-resource
+spec:
+  params:
+    - name: url
+      value: >-
+        image-registry.openshift-image-registry.svc.cluster.local:5000/mock-server/mock-server
+  type: image
+
