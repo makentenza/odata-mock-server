@@ -1,0 +1,17 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: mock-server
+  labels:
+    app: mock-server
+spec:
+  ports:
+    - name: 3000-tcp
+      protocol: TCP
+      port: 3000
+      targetPort: 3000
+  selector:
+    app: mock-server
+    deploymentconfig: mock-server
+  type: ClusterIP
+  sessionAffinity: None

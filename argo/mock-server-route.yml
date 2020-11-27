@@ -1,0 +1,25 @@
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: mock-server
+  labels:
+    app: mock-server
+spec:
+  host: mock-server-side-by-side.apps.cluster-56ec.56ec.example.opentlc.com
+  to:
+    kind: Service
+    name: mock-server
+    weight: 100
+  port:
+    targetPort: 3000-tcp
+  wildcardPolicy: None
+status:
+  ingress:
+    - host: mock-server-side-by-side.apps.cluster-56ec.56ec.example.opentlc.com
+      routerName: default
+      conditions:
+        - type: Admitted
+          status: 'True'
+          lastTransitionTime: '2020-11-27T13:59:07Z'
+      wildcardPolicy: None
+      routerCanonicalHostname: apps.cluster-56ec.56ec.example.opentlc.com
